@@ -1,11 +1,9 @@
-/* CalcSphere — style.css */
- 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
  
 :root {
-  --bg: #08080f; --surface: #10101a; --surface2: #161622;
+  --bg: #12121f; --surface: #1a1a28; --surface2: #202030;
   --glass: rgba(255,255,255,0.04); --glass-h: rgba(255,255,255,0.07);
-  --border: rgba(255,255,255,0.08); --border-h: rgba(255,255,255,0.16);
+  --border: rgba(255,255,255,0.13); --border-h: rgba(255,255,255,0.16);
   --text: #eeeef5; --text2: #9898b0; --text3: #55556a;
   --blue: #4f9eff;  --blue-dim:  rgba(79,158,255,0.12);
   --green: #36d68a; --green-dim: rgba(54,214,138,0.12);
@@ -83,8 +81,8 @@ body {
   animation: rotateRing linear infinite;
 }
 .r1 { width: 500px;  height: 500px;  animation-duration: 40s; transform: translate(-50%,-50%); }
-.r2 { width: 750px;  height: 750px;  animation-duration: 60s; opacity: .5; transform: translate(-50%,-50%); }
-.r3 { width: 1000px; height: 1000px; animation-duration: 90s; opacity: .25; transform: translate(-50%,-50%); }
+.r2 { width: 750px;  height: 750px;  animation-duration: 60s; opacity: .8; transform: translate(-50%,-50%); }
+.r3 { width: 1000px; height: 1000px; animation-duration: 90s; opacity: .5; transform: translate(-50%,-50%); }
 @keyframes rotateRing {
   from { transform: translate(-50%,-50%) rotate(0deg); }
   to   { transform: translate(-50%,-50%) rotate(360deg); }
