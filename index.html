@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CalcSphere — Universal Calculator Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-logo">
+      <div class="nav-logo-icon"><i class="fa-solid fa-infinity"></i></div>
+      <span>CalcSphere</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#" class="nav-link active" id="navHome" onclick="showHome(event)">Home</a>
+      <a href="#" class="nav-link hidden" id="navBack" onclick="showHome(event)">
+        <i class="fa-solid fa-arrow-left"></i> All Calculators
+      </a>
+    </nav>
+    <div class="nav-badge">University Project</div>
+  </header>
+ 
+  <main id="app">
+ 
+    <!-- HOME SCREEN -->
+    <section id="homeScreen" class="screen active">
+      <div class="hero">
+        <div class="hero-glow"></div>
+        <div class="deco-ring r1"></div>
+        <div class="deco-ring r2"></div>
+        <div class="deco-ring r3"></div>
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="pill-dot"></span>
+            <span>4 Calculators &nbsp;·&nbsp; Globally Accurate</span>
+          </div>
+          <h1 class="hero-title">
+            One Hub.<br>
+            <em>Every Calculation.</em>
+          </h1>
+          <p class="hero-sub">
+            A professional multi-purpose calculator suite for students,<br>
+            professionals and everyday use — worldwide.
+          </p>
+        </div>
+      </div>
+ 
+      <div class="cards-section">
+        <p class="cards-label">
+          <span></span>Choose a Calculator<span></span>
+        </p>
+        <div class="cards-grid">
+ 
+          <div class="calc-card" onclick="showCalc('basic')" tabindex="0" role="button">
+            <div class="card-accent ca-blue"></div>
+            <div class="card-icon-wrap ci-blue">
+              <i class="fa-solid fa-divide"></i>
+            </div>
+            <div class="card-body">
+              <h2>Basic</h2>
+              <p>Full-featured arithmetic with decimal precision. Add, subtract, multiply and divide.</p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag ct-blue">Arithmetic</span>
+              <span class="card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+ 
+          <div class="calc-card" onclick="showCalc('bmi')" tabindex="0" role="button">
+            <div class="card-accent ca-green"></div>
+            <div class="card-icon-wrap ci-green">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <div class="card-body">
+              <h2>BMI</h2>
+              <p>Calculate Body Mass Index with metric and imperial units plus health classification.</p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag ct-green">Health</span>
+              <span class="card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+ 
+          <div class="calc-card" onclick="showCalc('age')" tabindex="0" role="button">
+            <div class="card-accent ca-amber"></div>
+            <div class="card-icon-wrap ci-amber">
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+            <div class="card-body">
+              <h2>Age</h2>
+              <p>Exact age in years, months and days. Bonus: days until next birthday.</p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag ct-amber">Date &amp; Time</span>
+              <span class="card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+ 
+          <div class="calc-card" onclick="showCalc('loan')" tabindex="0" role="button">
+            <div class="card-accent ca-coral"></div>
+            <div class="card-icon-wrap ci-coral">
+              <i class="fa-solid fa-coins"></i>
+            </div>
+            <div class="card-body">
+              <h2>Loan EMI</h2>
+              <p>Monthly instalment, total interest and repayment breakdown. 10 currencies.</p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag ct-coral">Finance</span>
+              <span class="card-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+    </section>
+ 
+    <!-- BASIC CALCULATOR -->
+    <section id="calcBasic" class="screen calc-screen">
+      <div class="calc-header">
+        <div class="calc-icon-badge ci-blue"><i class="fa-solid fa-divide"></i></div>
+        <div>
+          <h2 class="calc-title">Basic Calculator</h2>
+          <p class="calc-desc">Standard arithmetic with full decimal support</p>
+        </div>
+      </div>
+      <div class="calc-body">
+        <div class="basic-display">
+          <div class="display-expr" id="displayExpr">0</div>
+          <div class="display-result" id="displayResult"></div>
+        </div>
+        <div class="basic-keypad">
+          <button class="key key-fn" onclick="basicClear()">C</button>
+          <button class="key key-fn" onclick="basicBackspace()"><i class="fa-solid fa-delete-left"></i></button>
+          <button class="key key-fn" onclick="basicPercent()">%</button>
+          <button class="key key-op" onclick="basicOp('÷')">÷</button>
+ 
+          <button class="key" onclick="basicNum('7')">7</button>
+          <button class="key" onclick="basicNum('8')">8</button>
+          <button class="key" onclick="basicNum('9')">9</button>
+          <button class="key key-op" onclick="basicOp('×')">×</button>
+ 
+          <button class="key" onclick="basicNum('4')">4</button>
+          <button class="key" onclick="basicNum('5')">5</button>
+          <button class="key" onclick="basicNum('6')">6</button>
+          <button class="key key-op" onclick="basicOp('−')">−</button>
+ 
+          <button class="key" onclick="basicNum('1')">1</button>
+          <button class="key" onclick="basicNum('2')">2</button>
+          <button class="key" onclick="basicNum('3')">3</button>
+          <button class="key key-op" onclick="basicOp('+')">+</button>
+ 
+          <button class="key key-zero" onclick="basicNum('0')">0</button>
+          <button class="key" onclick="basicDot()">.</button>
+          <button class="key key-eq" onclick="basicEquals()">=</button>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- BMI CALCULATOR -->
+    <section id="calcBmi" class="screen calc-screen">
+      <div class="calc-header">
+        <div class="calc-icon-badge ci-green"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div>
+          <h2 class="calc-title">BMI Calculator</h2>
+          <p class="calc-desc">Body Mass Index — metric &amp; imperial units</p>
+        </div>
+      </div>
+      <div class="calc-body">
+        <div class="unit-toggle">
+          <button class="unit-btn active" id="btnMetric" onclick="setUnit('metric')">Metric (kg / m)</button>
+          <button class="unit-btn" id="btnImperial" onclick="setUnit('imperial')">Imperial (lb / ft-in)</button>
+        </div>
+        <div class="input-group" id="metricInputs">
+          <div class="field">
+            <label>Weight <em>(kg)</em></label>
+            <input type="number" id="bmiWeightKg" placeholder="e.g. 70" min="1" max="500" />
+          </div>
+          <div class="field">
+            <label>Height <em>(m)</em></label>
+            <input type="number" id="bmiHeightM" placeholder="e.g. 1.75" min="0.5" max="3" step="0.01" />
+          </div>
+        </div>
+        <div class="input-group hidden" id="imperialInputs">
+          <div class="field">
+            <label>Weight <em>(lbs)</em></label>
+            <input type="number" id="bmiWeightLb" placeholder="e.g. 154" min="1" />
+          </div>
+          <div class="field field-row">
+            <div class="field-sub">
+              <label>Feet</label>
+              <input type="number" id="bmiHeightFt" placeholder="5" min="1" max="9" />
+            </div>
+            <div class="field-sub">
+              <label>Inches</label>
+              <input type="number" id="bmiHeightIn" placeholder="9" min="0" max="11" />
+            </div>
+          </div>
+        </div>
+        <button class="calc-btn cb-green" onclick="calcBMI()">
+          <i class="fa-solid fa-calculator"></i>&nbsp; Calculate BMI
+        </button>
+        <div class="result-panel" id="bmiResult" style="display:none">
+          <div class="result-big">
+            <span id="bmiValue">—</span>
+            <div class="result-sub" id="bmiCategory"></div>
+          </div>
+          <div class="bmi-scale">
+            <div class="bmi-track">
+              <div class="bmi-needle" id="bmiNeedle" style="left:0%"></div>
+              <div class="bmi-zones">
+                <div class="bz bz-under">Under<br>&lt;18.5</div>
+                <div class="bz bz-normal">Normal<br>18.5–25</div>
+                <div class="bz bz-over">Over<br>25–30</div>
+                <div class="bz bz-obese">Obese<br>≥30</div>
+              </div>
+            </div>
+          </div>
+          <p class="result-hint" id="bmiHint"></p>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- AGE CALCULATOR -->
+    <section id="calcAge" class="screen calc-screen">
+      <div class="calc-header">
+        <div class="calc-icon-badge ci-amber"><i class="fa-solid fa-calendar-days"></i></div>
+        <div>
+          <h2 class="calc-title">Age Calculator</h2>
+          <p class="calc-desc">Precise age in years, months and days</p>
+        </div>
+      </div>
+      <div class="calc-body">
+        <div class="field">
+          <label>Date of Birth</label>
+          <input type="date" id="ageDob" />
+        </div>
+        <div class="field">
+          <label>Calculate As Of <em>(leave blank for today)</em></label>
+          <input type="date" id="ageAsOf" />
+        </div>
+        <button class="calc-btn cb-amber" onclick="calcAge()">
+          <i class="fa-solid fa-hourglass-half"></i>&nbsp; Calculate Age
+        </button>
+        <div class="result-panel" id="ageResult" style="display:none">
+          <div class="age-grid">
+            <div class="age-stat">
+              <span class="age-num" id="ageYears">0</span>
+              <span class="age-unit">Years</span>
+            </div>
+            <div class="age-divider"></div>
+            <div class="age-stat">
+              <span class="age-num" id="ageMonths">0</span>
+              <span class="age-unit">Months</span>
+            </div>
+            <div class="age-divider"></div>
+            <div class="age-stat">
+              <span class="age-num" id="ageDays">0</span>
+              <span class="age-unit">Days</span>
+            </div>
+          </div>
+          <div class="age-extras">
+            <div class="age-extra-item">
+              <i class="fa-solid fa-clock"></i>
+              <span id="ageTotalDays"></span>
+            </div>
+            <div class="age-extra-item">
+              <i class="fa-solid fa-cake-candles"></i>
+              <span id="ageNextBday"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- LOAN CALCULATOR -->
+    <section id="calcLoan" class="screen calc-screen">
+      <div class="calc-header">
+        <div class="calc-icon-badge ci-coral"><i class="fa-solid fa-coins"></i></div>
+        <div>
+          <h2 class="calc-title">Loan EMI Calculator</h2>
+          <p class="calc-desc">Monthly instalment, interest &amp; full repayment breakdown</p>
+        </div>
+      </div>
+      <div class="calc-body">
+        <div class="field">
+          <label>Currency</label>
+          <select id="loanCurrency">
+            <option value="$">USD — US Dollar ($)</option>
+            <option value="€">EUR — Euro (€)</option>
+            <option value="£">GBP — British Pound (£)</option>
+            <option value="৳" selected>BDT — Bangladeshi Taka (৳)</option>
+            <option value="₹">INR — Indian Rupee (₹)</option>
+            <option value="¥">JPY — Japanese Yen (¥)</option>
+            <option value="¥">CNY — Chinese Yuan (¥)</option>
+            <option value="₩">KRW — South Korean Won (₩)</option>
+            <option value="﷼">SAR — Saudi Riyal (﷼)</option>
+            <option value="د.إ">AED — UAE Dirham (د.إ)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <div class="field">
+            <label>Principal Amount</label>
+            <input type="number" id="loanPrincipal" placeholder="e.g. 500000" min="1" />
+          </div>
+          <div class="field">
+            <label>Annual Interest Rate <em>(%)</em></label>
+            <input type="number" id="loanRate" placeholder="e.g. 8.5" min="0" step="0.01" />
+          </div>
+          <div class="field">
+            <label>Loan Tenure <em>(Years)</em></label>
+            <input type="number" id="loanYears" placeholder="e.g. 5" min="1" max="50" />
+          </div>
+        </div>
+        <button class="calc-btn cb-coral" onclick="calcLoan()">
+          <i class="fa-solid fa-chart-pie"></i>&nbsp; Calculate EMI
+        </button>
+        <div class="result-panel" id="loanResult" style="display:none">
+          <div class="loan-summary">
+            <div class="loan-stat">
+              <div class="loan-label">Monthly EMI</div>
+              <div class="loan-amount la-coral" id="loanEMI">—</div>
+            </div>
+            <div class="loan-stat">
+              <div class="loan-label">Total Interest</div>
+              <div class="loan-amount la-muted" id="loanInterest">—</div>
+            </div>
+            <div class="loan-stat">
+              <div class="loan-label">Total Payable</div>
+              <div class="loan-amount" id="loanTotal">—</div>
+            </div>
+          </div>
+          <div class="loan-bar-wrap">
+            <div class="loan-bar">
+              <div class="lb-principal" id="lbPrincipal"></div>
+              <div class="lb-interest" id="lbInterest"></div>
+            </div>
+            <div class="lb-legend">
+              <span><span class="lb-dot dot-p"></span>Principal</span>
+              <span><span class="lb-dot dot-i"></span>Interest</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <i class="fa-solid fa-infinity"></i>&nbsp; CalcSphere
+      </div>
+      <div class="footer-text">
+        Developed for <strong>Web Engineering</strong> — Final Lab Examination Project<br>
+        <span>Department of Computer Science &amp; Engineering</span>
+      </div>
+      <div class="footer-copy">© 2025 CalcSphere. Built with precision.</div>
+    </div>
+  </footer>
+ 
+  <script src="script.js"></script>
+</body>
+</html>
